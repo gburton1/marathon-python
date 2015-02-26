@@ -47,12 +47,13 @@ class MarathonApp(MarathonResource):
     :param list[str] uris: uris
     :param str user: user
     :param str version: version id
+    :param dict labels: metadata about app 
     """
 
     UPDATE_OK_ATTRIBUTES = [
         'args', 'backoff_factor', 'backoff_seconds', 'cmd', 'constraints', 'container', 'cpus', 'dependencies', 'disk',
         'env', 'executor', 'health_checks', 'instances', 'mem', 'ports', 'require_ports', 'store_urls',
-        'task_rate_limit', 'upgrade_strategy', 'uris', 'user', 'version'
+        'task_rate_limit', 'upgrade_strategy', 'uris', 'user', 'version', 'labels'
     ]
     """List of attributes which may be updated/changed after app creation"""
 
@@ -66,7 +67,7 @@ class MarathonApp(MarathonResource):
                  cpus=None, dependencies=None, deployments=None, disk=None, env=None, executor=None, health_checks=None,
                  id=None, instances=None, last_task_failure=None, mem=None, ports=None, require_ports=None,
                  store_urls=None, task_rate_limit=None, tasks=None, tasks_running=None, tasks_staged=None,
-                 upgrade_strategy=None, uris=None, user=None, version=None):
+                 upgrade_strategy=None, uris=None, user=None, version=None, labels=None):
 
         # self.args = args or []
         self.args = args
@@ -116,6 +117,7 @@ class MarathonApp(MarathonResource):
         self.uris = uris or []
         self.user = user
         self.version = version
+	self.labels = labels
 
 
 class MarathonHealthCheck(MarathonObject):
